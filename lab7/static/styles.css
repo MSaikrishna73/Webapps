@@ -1,0 +1,113 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background: url('https://wallpapersmug.com/download/2560x1440/f44676/blue-stains-watercolor-art.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #d0d0d0;
+}
+
+.container {
+    display: flex;
+    width: 85%;
+    height: 85vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.image-container {
+    width: 40%;
+    background: url('https://w0.peakpx.com/wallpaper/340/51/HD-wallpaper-cartoon-whale-surfer-minimal-blue-backgrounds-creative-blue-whale-artwork-whale-minimalsim-whales.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.form-container {
+    width: 60%;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.2); /* Lighter shade with opacity */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff; /* Ensure text is visible */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Ensure position for the warning messages */
+}
+
+label {
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #333333;
+    border-radius: 0;
+    font-size: 16px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 2px solid #1E90FF;
+}
+
+button {
+    padding: 10px;
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #1C86EE;
+}
+
+p {
+    text-align: center;
+    color: #ffffff;
+}
+
+a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+    color: red;
+    position: absolute;
+    bottom: -50px; /* Position warning messages at the bottom */
+    width: 100%;
+    text-align: center;
+}
