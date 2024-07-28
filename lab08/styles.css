@@ -1,52 +1,135 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #121212;
+    color: #e0e0e0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     margin: 0;
 }
 
-.todo-container {
-    background-color: #fff;
+.calendar-todo-container {
+    background-color: #1e1e1e;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 1200px;
+    height: 100vh;
+    overflow-y: auto;
+    border-radius: 15px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.input-container {
+header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-#new-task-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
+#app-title {
+    color: #ff8c00; /* Peach orange color */
+    margin: 0;
 }
 
-#add-task-button {
+.header-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-button {
+    font-weight: bold;
+    cursor: pointer;
     padding: 10px 20px;
-    border: none;
-    background-color: #28a745;
+    border-radius: 15px;
+}
+
+.orange-button {
     color: #fff;
-    border-radius: 4px;
+    background-color: #ff8c00;
+}
+
+.orange-button:hover {
+    background-color: #e07b00;
+}
+
+.grey-button {
+    color: #bbb;
+    background-color: #444;
+}
+
+.grey-button:hover {
+    background-color: #555;
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-nav span {
+    color: #bbb;
+    font-weight: bold;
     cursor: pointer;
 }
 
-#add-task-button:hover {
-    background-color: #218838;
+.calendar-nav span:hover {
+    text-decoration: underline;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-top: 1px solid #555;
+    border-left: 1px solid #555;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+.calendar div {
+    padding: 10px;
+    text-align: center;
+    color: #e0e0e0;
+    cursor: pointer;
+    border-bottom: 1px solid #555;
+    border-right: 1px solid #555;
+    border-radius: 15px;
+}
+
+.calendar div:hover {
+    background-color: #444444;
+}
+
+.calendar .selected {
+    background-color: #ff8c00;
+    color: #ffffff;
+}
+
+.calendar .selected.white {
+    background-color: #ffffff;
+    color: #ff8c00;
+}
+
+.calendar .task-day {
+    color: #ff8c00; /* Peach orange color */
+}
+
+.task-section {
+    display: none;
+}
+
+.all-tasks-section {
+    display: none;
+}
+
+#no-tasks-message {
+    display: none;
+    text-align: center;
+    color: #ff8c00;
+    margin-top: 20px;
+    font-style: italic;
 }
 
 ul {
@@ -56,48 +139,170 @@ ul {
 
 li {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid #555;
+    color: #e0e0e0;
+    position: relative;
+    border-radius: 15px;
 }
 
 li:last-child {
     border-bottom: none;
 }
 
-.edit-button, .delete-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 5px;
+.task-title {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.edit-button:hover {
-    background-color: #0056b3;
+.task-date {
+    font-size: 18px;
+    color: #bbb;
+}
+
+.task-description {
+    font-size: 18px;
+}
+
+.task-done {
+    text-decoration: line-through;
+}
+
+.task-done.white {
+    text-decoration-color: #ff8c00;
+}
+
+.task-done.orange {
+    text-decoration-color: #fff;
+}
+
+.edit-button, .delete-button, .done-button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 0.5cm;
+    top: 10px;
+}
+
+.done-button {
+    color: #ff8c00;
+    right: 1.5cm;
+}
+
+.edit-button {
+    color: #fff;
+    transform: scaleX(-1); /* Flip the pencil icon */
+    right: 2.5cm;
 }
 
 .delete-button {
-    background-color: #dc3545;
+    color: #dc3545;
 }
 
 .delete-button:hover {
-    background-color: #c82333;
+    color: #c82333;
 }
 
 .save-button {
-    background-color: #ffc107;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
+    color: #ff8c00;
     cursor: pointer;
     margin-left: 5px;
+    font-size: 1.2rem;
 }
 
 .save-button:hover {
-    background-color: #e0a800;
+    color: #e0a800;
+}
+
+.add-task-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.add-task-bottom span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff8c00;
+    cursor: pointer;
+}
+
+.bold-label {
+    font-weight: bold;
+}
+
+.normal-label {
+    font-weight: normal;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 15px;
+}
+
+.close, .close-past-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.close-past-modal:hover,
+.close-past-modal:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#modal-task-title, #modal-task-description, #modal-task-date, #modal-task-deadline {
+    padding: 10px;
+    border: 1px solid #555555;
+    border-radius: 15px;
+    background-color: #333333;
+    color: #e0e0e0;
+}
+
+.orange-button {
+    color: #fff;
+    background-color: #ff8c00;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.orange-button:hover {
+    background-color: #e07b00;
+}
+
+#modal-high-priority {
+    margin-right: 10px;
 }

@@ -3,18 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List Application</title>
+    <title>Calendar To-Do List Application</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="todo-container">
-        <h1>To-Do List</h1>
-        <div class="input-container">
-            <input type="text" id="new-task-input" placeholder="Add a new task">
-            <button id="add-task-button">Add Task</button>
+    <div class="calendar-todo-container">
+        <header>
+            <h1 id="app-title">lets do</h1>
+            <div class="header-buttons">
+                <span id="view-toggle-button" class="header-button grey-button">List</span>
+                <span id="add-task-modal-button" class="header-button orange-button">Add task</span>
+            </div>
+        </header>
+        <div class="calendar-nav">
+            <span id="prev-month">&lt;</span>
+            <span id="current-month"></span>
+            <span id="next-month">&gt;</span>
         </div>
-        <ul id="task-list"></ul>
+        <div class="calendar" id="calendar"></div>
+        <div class="task-section">
+            <h2>Tasks for <span id="selected-date"></span></h2>
+            <ul id="task-list"></ul>
+            <p id="no-tasks-message">No tasks to do</p>
+        </div>
+        <div class="all-tasks-section">
+            <h2>All Tasks</h2>
+            <ul id="all-tasks-list"></ul>
+        </div>
     </div>
+
+    <!-- Add Task Modal -->
+    <div id="add-task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Task</h2>
+            <div class="input-container">
+                <label for="modal-task-title" class="bold-label">Title</label>
+                <input type="text" id="modal-task-title" placeholder="Add a title">
+                <label for="modal-task-description" class="normal-label">Description</label>
+                <textarea id="modal-task-description" placeholder="Add a description"></textarea>
+                <label for="modal-task-date" class="normal-label">Date</label>
+                <input type="date" id="modal-task-date">
+                <label for="modal-task-deadline" class="normal-label">Deadline</label>
+                <input type="time" id="modal-task-deadline">
+                <label>
+                    <input type="checkbox" id="modal-high-priority"> High Priority
+                </label>
+                <span id="modal-add-task-button" class="orange-button">Add Task</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Past Date Warning Modal -->
+    <div id="past-date-modal" class="modal">
+        <div class="modal-content">
+            <h2>We can add tasks</h2>
+            <p>We can't travel back in time yet!</p>
+            <span class="close-past-modal" style="color: red; cursor: pointer;">&#x274C;</span>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
